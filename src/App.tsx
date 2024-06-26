@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <div className="font-bold text-red-700">
-      <h1>Todo app</h1>
-    </div>
-  );
+  return <div className=" text-4xl font-bold">Todo app</div>;
 }
 
 export default App;
