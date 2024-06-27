@@ -27,8 +27,12 @@ const todoSlice = createSlice({
       );
       state.toDos = filteredToDo;
     },
+    toggleComplete: (state, action: PayloadAction<string>) => {
+      const findToDo = state.toDos.find((todo) => todo.id === action.payload);
+      findToDo!.isCompleted = !findToDo!.isCompleted;
+    },
   },
 });
 
-export const { addTodo, removeToDo } = todoSlice.actions;
+export const { addTodo, removeToDo, toggleComplete } = todoSlice.actions;
 export default todoSlice.reducer;
