@@ -22,7 +22,10 @@ const todoSlice = createSlice({
       state.toDos.push({ ...action.payload, isCompleted: false });
     },
     removeToDo: (state, action: PayloadAction<string>) => {
-      state.toDos.filter((todo) => todo.id !== action.payload);
+      const filteredToDo = state.toDos.filter(
+        (todo) => todo.id !== action.payload
+      );
+      state.toDos = filteredToDo;
     },
   },
 });
