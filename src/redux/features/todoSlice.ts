@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 type TToDos = {
+  id: string;
   title: string;
   description: string;
   isCompleted?: boolean;
