@@ -10,8 +10,16 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { FormEvent, useState } from "react";
 
 const AddTodoModal = () => {
+  const [task, setTask] = useState("");
+  const [description, setDescription] = useState("");
+
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log({ task, description });
+  };
   return (
     <div>
       {" "}
@@ -23,35 +31,38 @@ const AddTodoModal = () => {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>Add Task</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
+              Add your task that you want to finish.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
-                Name
+                Task
               </Label>
               <Input
-                id="name"
-                defaultValue="Pedro Duarte"
+                onBlur={(e) => setTask(e.target.value)}
+                id="task"
                 className="col-span-3"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="username" className="text-right">
-                Username
+                Description
               </Label>
+
               <Input
-                id="username"
-                defaultValue="@peduarte"
+                onBlur={(e) => setDescription(e.target.value)}
+                id="description"
                 className="col-span-3"
               />
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <Button onClick={submit} type="submit">
+              Save
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
