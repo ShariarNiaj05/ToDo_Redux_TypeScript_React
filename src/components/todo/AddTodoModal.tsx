@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -36,34 +37,36 @@ const AddTodoModal = () => {
               Add your task that you want to finish.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Task
-              </Label>
-              <Input
-                onBlur={(e) => setTask(e.target.value)}
-                id="task"
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Description
-              </Label>
+          <form onSubmit={submit}>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Task
+                </Label>
+                <Input
+                  onBlur={(e) => setTask(e.target.value)}
+                  id="task"
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  Description
+                </Label>
 
-              <Input
-                onBlur={(e) => setDescription(e.target.value)}
-                id="description"
-                className="col-span-3"
-              />
+                <Input
+                  onBlur={(e) => setDescription(e.target.value)}
+                  id="description"
+                  className="col-span-3"
+                />
+              </div>
             </div>
-          </div>
-          <DialogFooter>
-            <Button onClick={submit} type="submit">
-              Save
-            </Button>
-          </DialogFooter>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button type="submit">Save</Button>
+              </DialogClose>
+            </DialogFooter>
+          </form>
         </DialogContent>
       </Dialog>
     </div>
