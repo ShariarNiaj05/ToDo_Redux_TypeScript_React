@@ -12,7 +12,14 @@ export const baseApi = createApi({
         method: "GET",
       }),
     }),
+    addToDo: builder.mutation({
+      query: (data) => ({
+        url: "/task",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetToDosQuery } = baseApi;
+export const { useGetToDosQuery, useAddToDoMutation } = baseApi;
