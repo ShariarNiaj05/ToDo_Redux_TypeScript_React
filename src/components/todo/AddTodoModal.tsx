@@ -9,6 +9,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAddToDoMutation } from "@/redux/api/api";
@@ -19,6 +28,7 @@ import { FormEvent, useState } from "react";
 const AddTodoModal = () => {
   const [title, setTask] = useState("");
   const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("");
   // const dispatch = useAppDispatch();
 
   // for server
@@ -31,7 +41,8 @@ const AddTodoModal = () => {
     const taskDetails = {
       title,
       description,
-      // priority,
+      isCompleted: false,
+      priority,
     };
     // for server
     await addTodo(taskDetails);
@@ -77,6 +88,31 @@ const AddTodoModal = () => {
                   id="description"
                   className="col-span-3"
                 />
+              </div>
+
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Select onValueChange={(value) => setPriority(value)}>
+                  <Label htmlFor="priority" className="text-right">
+                    Priority
+                  </Label>
+
+                  {/*  <Input
+                    onBlur={(e) => setPriority(e.target.value)}
+                    id="priority"
+                    className="col-span-3"
+                  /> */}
+                  <SelectTrigger className="col-span-3">
+                    <SelectValue placeholder="Select priority" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Priority</SelectLabel>
+                      <SelectItem value="high">Hight</SelectItem>
+                      <SelectItem value="low">Low</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
             <DialogFooter>
