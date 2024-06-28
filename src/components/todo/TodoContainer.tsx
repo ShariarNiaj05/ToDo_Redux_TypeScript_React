@@ -19,7 +19,7 @@ const TodoContainer = () => {
       </div>
       <div className=" bg-primary-gradient w-full min-h-[500px] rounded-xl p-5 space-y-10">
         <NoPendingTaskCard />
-        {toDos?.map((toDo) => (
+        {toDos?.data?.map((toDo) => (
           <TodoCard {...toDo} />
         ))}
       </div>
