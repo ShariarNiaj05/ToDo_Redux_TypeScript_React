@@ -15,14 +15,15 @@ const TodoCard = ({ id, title, description, isCompleted }: TToDoCardProps) => {
   return (
     <div className=" bg-white rounded-md flex justify-between items-center p-3">
       <input
+        className="flex-1"
         onChange={toggleStateChange}
         type="checkbox"
         name="complete"
         id="complete"
       />
-      <p className=" font-semibold">{title}</p>
-      <p>{isCompleted ? "Done" : "Pending"}</p>
-      <p>{description}</p>
+      <p className=" font-semibold flex-[2] ">{title}</p>
+      <p className=" flex-1">{isCompleted ? "Done" : "Pending"}</p>
+      <p className="flex-[2]">{description}</p>
       <div className=" space-x-5">
         <Button
           onClick={() => dispatch(removeToDo(id))}
